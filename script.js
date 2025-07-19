@@ -17,11 +17,11 @@ const messages = [
 ];
 
 const images = [
-  "images/download6.png", "images/download7.png", "images/download8.png", "images/download9.png",
-  "images/download10.png", "images/download11.png", "images/download12.png", "images/download13.png",
-  "images/emoji-love-meme-doodle14.gif", "images/emojify15.gif", "images/heart16.gif", "images/emoji-cute.gif",
-  "images/emoji-love.gif", "images/emoji-smile.gif", "images/heart.gif", "images/kiss-transparent.gif",
-  "images/love-you-emojis.gif", "images/teehee-blush.gif", "images/wow-heart-eyes.gif", "images/колобокicq-emoji.gif"
+  "download6.png", "download7.png", "download8.png", "download9.png",
+  "download10.png", "download11.png", "download12.png", "download13.png",
+  "emoji-love-meme-doodle14.gif", "emojify15.gif", "heart16.gif", "emoji-cute.gif",
+  "emoji-love.gif", "emoji-smile.gif", "heart.gif", "kiss-transparent.gif",
+  "love-you-emojis.gif", "teehee-blush.gif", "wow-heart-eyes.gif", "колобокicq-emoji.gif"
 ];
 
 const emoticons = [
