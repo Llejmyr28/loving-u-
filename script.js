@@ -17,11 +17,11 @@ const messages = [
 ];
 
 const images = [
-  "download6.png", "download7.png", "download8.png", "download9.png",
-  "download10.png", "download11.png", "download12.png", "download13.png",
-  "emoji-love-meme-doodle14.gif", "emojify15.gif", "heart16.gif", "emoji-cute.gif",
-  "emoji-love.gif", "emoji-smile.gif", "heart.gif", "kiss-transparent.gif",
-  "love-you-emojis.gif", "teehee-blush.gif", "wow-heart-eyes.gif", "колобокicq-emoji.gif"
+  "images/download6.png", "images/download7.png", "images/download8.png", "images/download9.png",
+  "images/download10.png", "images/download11.png", "images/download12.png", "images/download13.png",
+  "images/emoji-love-meme-doodle14.gif", "images/emojify15.gif", "images/heart16.gif", "images/emoji-cute.gif",
+  "images/emoji-love.gif", "images/emoji-smile.gif", "images/heart.gif", "images/kiss-transparent.gif",
+  "images/love-you-emojis.gif", "images/teehee-blush.gif", "images/wow-heart-eyes.gif", "images/колобокicq-emoji.gif"
 ];
 
 const emoticons = [
@@ -42,50 +42,45 @@ const softQuotes = [
   "Being with you feels like home."
 ];
 
-// Date
-const today = new Date();
-const dateStr = today.toDateString();
-const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+window.addEventListener("load", () => {
+  document.getElementById("loader").classList.add("hidden");
+  document.querySelector(".message-box").classList.remove("hidden");
 
-// Pick daily content
-const message = messages[dayOfYear % messages.length];
-const image = images[dayOfYear % images.length];
-const emoticon = emoticons[dayOfYear % emoticons.length];
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+  const message = messages[dayOfYear % messages.length];
+  const image = images[dayOfYear % images.length];
+  const emoticon = emoticons[dayOfYear % emoticons.length];
 
-// Typewriter effect
+  document.getElementById("message").textContent = "";
+  typeWriter(`${message} ${emoticon}`, 0, document.getElementById("message"));
+  document.getElementById("date").textContent = "Today: " + today.toDateString();
+
+  const imgEl = document.createElement("img");
+  imgEl.src = image;
+  imgEl.alt = "Love Pic";
+  document.getElementById("image-container").appendChild(imgEl);
+
+  const startDate = new Date("2025-06-25");
+  const daysTogether = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+  document.getElementById("since").textContent = `We've been talking for ${daysTogether} day${daysTogether !== 1 ? "s" : ""} now 💗`;
+
+  let opens = localStorage.getItem("openCount") || 0;
+  opens++;
+  localStorage.setItem("openCount", opens);
+  document.getElementById("tapCount").textContent = `You’ve opened this ${opens} time${opens > 1 ? 's' : ''} 💕`;
+
+  document.getElementById("bgQuote").textContent =
+    softQuotes[Math.floor(Math.random() * softQuotes.length)];
+});
+
 function typeWriter(text, i, element) {
   if (i < text.length) {
     element.textContent += text.charAt(i);
     setTimeout(() => typeWriter(text, i + 1, element), 35);
   }
 }
-document.getElementById("message").textContent = "";
-typeWriter(`${message} ${emoticon}`, 0, document.getElementById("message"));
 
-// Date
-document.getElementById("date").textContent = "Today: " + dateStr;
-
-// Image
-const imgEl = document.createElement("img");
-imgEl.src = "images/" + image;
-imgEl.alt = "Love Pic";
-document.getElementById("image-container").appendChild(imgEl);
-
-// Since start
-const startDate = new Date("2025-06-25");
-const diffInMs = today - startDate;
-const daysTogether = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-document.getElementById("since").textContent =
-  `We've been talking for ${daysTogether} day${daysTogether !== 1 ? "s" : ""} now 💗`;
-
-// Open count
-let opens = localStorage.getItem("openCount") || 0;
-opens++;
-localStorage.setItem("openCount", opens);
-document.getElementById("tapCount").textContent =
-  `You’ve opened this ${opens} time${opens > 1 ? 's' : ''} 💕`;
-
-// Floating hearts
 function createHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
@@ -98,11 +93,14 @@ function createHeart() {
 }
 setInterval(createHeart, 300);
 
-// Soft background quote
-document.getElementById("bgQuote").textContent =
-  softQuotes[Math.floor(Math.random() * softQuotes.length)];
+// Toggle music
+const music = document.getElementById("loveMusic");
+document.getElementById("musicBtn").addEventListener("click", () => {
+  if (music.paused) music.play();
+  else music.pause();
+});
 
-// Service Worker for PWA
+// PWA
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
     .then(reg => console.log("SW registered!", reg))
