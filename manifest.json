@@ -1,11 +1,10 @@
 {
-  "name": "Love Message for You 💖",
-  "short_name": "RIRII 𐙚⋆°｡⋆♡",
+  "name": "ILOVEYOUUU RIRII ᰔᩚ",
+  "short_name": "𐙚⋆°.⋆♡",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffc1e3",
   "theme_color": "#ffc1e3",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "images/heart16.gif",
