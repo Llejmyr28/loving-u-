@@ -7,9 +7,9 @@ self.addEventListener("install", (e) => {
         "/style.css",
         "/script.js",
         "/manifest.json",
-        "/images/download6.png",
-        "/images/heart.gif",
-        // 👉 add more if needed
+        "/love-song.mp3",
+        "/images/heart.gif"
+        // Add more image paths here if needed
       ]);
     })
   );
