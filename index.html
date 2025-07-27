@@ -7,17 +7,20 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffc1e3" />
-  <link rel="apple-touch-icon" href="images/heart16.gif" />
+  <link rel="apple-touch-icon" href="images/heart.gif" />
 </head>
 <body>
 
+  <div id="loader" class="loader">
+    <p>Loading love just for you... 💗</p>
+  </div>
+
   <div class="hearts-container" id="hearts-container"></div>
 
-  <div class="message-box">
-    <h1>HIII BABYYYY ✿˚ ༘ ⋆｡♡˚</h1>
+  <div class="message-box hidden">
+    <h1 class="glow">HIII BABYYYY ✿˚ ༘ ⋆｡♡˚</h1>
 
     <div id="image-container"></div>
-
     <p id="message" class="typing"></p>
     <div class="since" id="since"></div>
     <div class="date" id="date"></div>
@@ -26,6 +29,12 @@
   </div>
 
   <div class="background-quote" id="bgQuote"></div>
+
+  <button id="musicBtn">🎵 Toggle Music</button>
+
+  <audio id="loveMusic" loop>
+    <source src="love-song.mp3" type="audio/mpeg" />
+  </audio>
 
   <script src="script.js"></script>
 </body>
